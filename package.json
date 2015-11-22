@@ -1,19 +1,25 @@
 {
-  "name": "mycs-deploy-cli",
+  "name": "ssh-deploy-cli",
   "version": "1.0.0",
-  "description": "Micro-CLI to deploy",
+  "description": "CLI to deploy through SSH",
   "author": "Nicolas Ritouet <nicolas@ritouet.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NicolasRitouet/deployment-cli.git"
+    "url": "https://github.com/NicolasRitouet/ssh-deploy-cli.git"
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "prepublish": "npm run test && rm -rf lib",
+    "postpublish": "rm -rf lib"
+  },
+  "bin": {
+    "ssh-deploy": "bin/deploy.js"
   },
   "keywords": [],
   "license": "MIT",
   "dependencies": {
+    "chalk": "^1.1.1",
     "co": "^4.6.0",
     "direktor": "^0.6.0",
     "readline-sync": "^1.2.21",
